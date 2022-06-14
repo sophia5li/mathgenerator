@@ -39,3 +39,5 @@ shadowJar {
         attributes 'Main-Class': 'com.mathgenerator.Main'
     }
 }
+
+task stage(dependsOn: ['shadowJar', 'clean'])

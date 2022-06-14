@@ -2,11 +2,17 @@ viewRendererConfiguration:
   mustache:
     cache: false
 
+server:
+  applicationConnectors:
+    - type: http
+      port: 80
+
 database:
   driverClass: org.postgresql.Driver
   user: sophia5li
   password: FZEuVLCGvh-L77kddBctpA
-  url: jdbc:postgresql://free-tier14.aws-us-east-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dbaby-troll-504
+#  url: jdbc:postgresql://free-tier14.aws-us-east-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dbaby-troll-504
+  url: jdbc:postgresql://free-tier14.aws-us-east-1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dbaby-troll-504&sslrootcert=/app/app/root.crt
   properties:
     charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
