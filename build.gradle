@@ -1,14 +1,41 @@
 plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'java'
 }
 
-group 'org.example'
+group 'org.mathgenerator'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    mavenLocal()
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots';
+    }
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // implementation 'com.google.inject:guice:5.1.0'
+    // implementation 'com.google.inject.extensions:guice-servlet:5.1.0'
+    // implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    // implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+    // implementation group: 'io.logz', name: 'guice-jersey', version: '1.0.16'
+    implementation group: 'io.dropwizard', name: 'dropwizard-core', version: '2.0.28'
+    implementation group: 'io.dropwizard', name: 'dropwizard-hibernate', version: '2.0.28'
+    implementation group: 'io.dropwizard', name: 'dropwizard-views-mustache', version: '2.0.28'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+shadowJar {
+    mergeServiceFiles()
+    exclude 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.SF'
+    manifest {
+        attributes 'Main-Class': 'com.mathgenerator.Main'
+    }
 }

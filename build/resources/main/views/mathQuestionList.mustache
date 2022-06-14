@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+    <div>Hello World!</div>
+    <div>
+        <form action="/grade" method="post">
+        {{#questionList2}}
+                {{#value}}
+                <div style="background-color: {{#bgColor}}{{key}}{{/bgColor}}">
+                    {{num1}} {{operator}} {{num2}} = <input type="text" name="answer_{{key}}"/>
+                    {{> questionHidden }}
+                </div>
+                {{/value}}
+        {{/questionList2}}
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>
